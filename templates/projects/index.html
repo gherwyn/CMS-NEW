@@ -6,28 +6,46 @@
 
 {% block content %}
     <h1 class="text-center mb-4"> Projects App </h1>
-{% if project_list %}
+{% if page_obj %}
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Profile Image</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">First Name</th>
+                    <th class="text-center">Last Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Profile Image</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
-                {% for projects in project_list%}
+                {% for projects in page_obj %}
                 <tr>
-                    <td>{{projects.user_fname}}</td>
-                    <td>{{projects.user_lname}}</td>
-                    <td>{{projects.user_email}}</td>
+                    <td class="text-center">{{projects.id}}</td>
+                    <td class="text-center">{{projects.user_fname}}</td>
+                    <td class="text-center">{{projects.user_lname}}</td>
+                    <td class="text-center">{{projects.user_email}}</td>
                     <td class="text-center"><img src="media/{{projects.user_image}}" alt="userimage" width="50" height="50" class="rounded circle"></td>
+                    <td class="text-center"><a href="{% url 'cmsmain:detail' projects.id %}">View</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table> 
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a href="?page1" class="page-link"> First </a></li>
+                <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous </a></li>
+            {% endif %}
+            
+            {% if page_obj.has_next %}
+                <li class="page-item"><a href="?page={{ page.obj.next_page_number }}" class="page-link"> Next </a></li>
+                <li class="page-item"><a href="?page={{ page.obj.paginator.num_pages }}" class="page-link">&raquo; Last </a></li>
+            {% endif %}
+
+        </ul>
+
+        
     </div>
 {% endif %}    
 {% endblock %}

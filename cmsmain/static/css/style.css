@@ -1,0 +1,4 @@
+.red .active a,
+.red .active a:hover {
+    background-color: red;
+}

@@ -1,7 +1,16 @@
-<nav class="navbar justify-content-center navbar-dark bg-dark mb-4">
+<nav class="nav-fill nav-light bg-dark mb-4 py-2">
     <div class="contrainer">
-        <a href="/cmsmain" class="navbar-brand">Projects</a>
-        <a href="add" class="navbar-brand">Add New</a>
-        <a href=""class="navbar-brand">Login</a>          
+        <ul class="nav nav-pill">
+            <li class="nav-item">
+                <a href="/cmsmain" class="nav-link red">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'cmsmain:add' %}" class="nav-link">Add New</a>
+            </li>
+            <li class="nav-item">
+                <a href=""class="nav-link">Login</a>
+            </li>
+
+        </ul>
     </div>
 </nav>

@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+
+{% block title %}
+    {{ projects.user_fname}} {{projects.user_lname}}
+{% endblock %}
+
+{% if error_message %}
+        <p class="alert alert-danger">
+            <strong>{{ error_message }}</strong>
+        </p>
+{% endif %}
+
+{% block content %}
+<div class="text-center mb-10">
+    <h1> {{ projects.user_fname}} {{projects.user_lname}} </h1>    
+    <p class="text-muted">{{projects.user_email}}</p>
+    <p>Position : {{projects.user_position}}</p>
+    <div class="img-responsive text-center">
+        <img src="/cmsmain/media/{{projects.user_image}}" class="img-rounded" width="300" height="">
+    </div>
+
+    <div class="btn">
+        <a href="{% url 'cmsmain:delete' projects.id %}" class="btn btn-sm btn-danger"> Delete </a>
+        <a href="{% url 'cmsmain:edit' projects.id %}" class="btn btn-sm btn-info"> Edit </a>
+        <a href="{% url 'cmsmain:index' %}" class="btn btn-sm btn-success"> Return </a> 
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Add New User
+    Edit {{projects.user_fname}}
 {% endblock %}
 
 
@@ -13,25 +13,25 @@
         </p>
     {% endif %}
 
-    <form action="{% url 'cmsmain:processadd' %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'cmsmain:processedit' projects.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="form-group">
             <label for=""> First Name</label>
-            <input type="text" name="fname" id="fname" class="form-control" required=True>
+            <input type="text" name="fname" id="fname" class="form-control" required=True value="{{projects.user_fname}}">
         </div>
         <div class="form-group">
             <label for=""> Last Name </label>
-            <input type="text" name="lname" id="lname" class="form-control" required=True>
+            <input type="text" name="lname" id="lname" class="form-control" required=True value="{{projects.user_lname}}">
         </div>
         <div class="form-group">
             <label for=""> Email </label>
-            <input type="email" name="email" id="email" class="form-control" required=True>
+            <input type="email" name="email" id="email" class="form-control" required=True value="{{projects.user_email}}">
         </div>
 
         <div class="form-group">
             <label for=""> Position </label>
-            <input type="text" name="position" id="position" class="form-control" required=True>
+            <input type="text" name="position" id="position" class="form-control" required=True value="{{projects.user_position}}">
         </div>
 
         <div class="form-group">
@@ -39,7 +39,7 @@
             <input type="file" name="image" id="image" >
         </div>
 
-        <button type="submit" class="btn btn-success mt-2">Add</button>
+        <button type="submit" class="btn btn-primary mt-2"> Update </button>
 
     </form>
 
